@@ -1,0 +1,47 @@
+:root {
+
+  /*
+  */
+  --negro: #1B1A17;
+  --amarillo: #F0A500;
+  --naranja: #E45826;
+  --blanco: #E6D5B8;
+}
+
+
+/****************************/
+/*          fondos          */
+/****************************/
+
+
+.bg-negro{background:  var(--negro) !important;}
+
+.bg-amarillo{background:  var(--amarillo) !important;}
+
+.bg-naranja{background:  var(--naranja) !important;}
+
+.bg-blanco{background:  var(--blanco) !important;}
+
+
+/****************************/
+/*          color           */
+/****************************/
+
+
+.color-negro{color:  var(--negro) !important;}
+
+.color-amarillo{color:  var(--amarillo) !important;}
+
+.color-naranja{color:  var(--naranja) !important;}
+
+.color-blanco{color:  var(--blanco) !important;}
+
+/*******************************/
+/*            blur             */
+/*******************************/
+
+
+/*.bg-dark-blur{
+  background: #4040409e;
+  backdrop-filter: blur(4px);
+}*/
