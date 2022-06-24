@@ -13,6 +13,14 @@ class routes{
 	        $ruta = explode("/", $p);
 	    }
 
+	    session_start();
+
+	    if (!isset($_SESSION['userRedS'])) {
+	    	$this->outRoute($ruta, $serve, $appName, $autor);
+	    }
+	}
+
+	public function outRoute($ruta = array(), $s, $n, $autor){
 	    switch ($ruta[0]) {
 
 	        case "Home":
@@ -22,12 +30,12 @@ class routes{
 
             case 'LogIn':
             	include_once '../www/'.$ruta[0].'.php';
-            	logIn();
+            	logIn($s, $n);
             	break;
 
         	case 'SingUp':
         		include_once '../www/'.$ruta[0].'.php';
-        		singIn();
+        		singUp();
         		break;
 
 	        case "e403":
