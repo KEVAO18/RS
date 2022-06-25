@@ -32,7 +32,7 @@ class conection{
 
 			return $pdo;
 		} catch (PDOException $e) {
-			print_r("Error en codigo: ". $e->getmessage);
+			print_r("Error en codigo: ". $e);
 		}
 	}
 }
