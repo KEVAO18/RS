@@ -37,14 +37,12 @@ class dbController extends conection{
 		return $this->consultaSQL("SELECT $columna FROM $tabla");
 	}
 
-}
+	public function where($tabla, $columna, $val, $oper = '='){
+		$q = $this->consultaSQL("SELECT * FROM $tabla WHERE $columna $oper '$val'");
 
-$datos = new dbController();
+		return $q;
+	}
 
-$data = $datos->AnyColumn("usuarios", "NomUsu, pass");
-
-foreach ($data as $dato) {
-	echo $dato[0]."<br>";
 }
 
 ?>
