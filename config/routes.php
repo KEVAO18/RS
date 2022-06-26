@@ -35,7 +35,7 @@ class routes{
 
         	case 'SingUp':
         		include_once '../www/'.$ruta[0].'.php';
-        		singUp();
+        		singUp($s, $n);
         		break;
 
 	        case "e403":

@@ -21,7 +21,7 @@ function logIn($s, $n)
 					  <div class="d-grid gap-2">
 					  	<button type="submit" id="login_ok" class="btn btn-outline-dark btn-block">Submit</button>
 					  </div>
-					  <p class="text-center pt-1-r color-negro"><small>You do not have an account? <a class="text-decoration-none color-negro" href="">SignUp</a></small></p>
+					  <p class="text-center pt-1-r color-negro"><small>You do not have an account? <a class="text-decoration-none color-negro" href="<?=$s?>/SingUp">SignUp</a></small></p>
 					</form>
 				</div>
 			</div>
