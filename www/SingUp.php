@@ -60,6 +60,7 @@ function singUp($s, $n){
 		        		let ale = document.getElementById("singUp_form");
 		        		ale.reset();
 		        		Swal.fire(info.msg,'','success');
+		        		window.location.href = '<?=$s?>/dashboard';
 		        	} else {
 		        		Swal.fire(info.msg,'','error');
 		        	}

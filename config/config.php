@@ -172,6 +172,65 @@ class config{
 
         return $this;
     }
+
+    public function isLogged($user, $status, $page){
+        if ($user == "" || $status == 0) {
+            $_SESSION['status'] = 0;
+            $_SESSION['user'] = "";
+        }elseif ($_SESSION['user'] != "" && $status == 1 && ($page == "Home" || $page == "LogIn" || $page == "SingUp")) {
+            ?>
+            <script>
+                window.location.href = '<?=$this->getServe()?>/dashboard';
+            </script>
+            <?php
+        }
+    }
+
+    public function navbar($status){
+        if ($status == 0) {
+            ?>
+            <nav class="navbar navbar-expand-lg navbar-light bg-blanco shadow">
+              <div class="container-fluid">
+                <a class="navbar-brand color-negro" href="<?=$this->getServe()?>/Home"><?=$this->getName()?></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link color-negro" aria-current="page" href="<?=$this->getServe()?>/LogIn">LogIn</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link color-negro" href="<?=$this->getServe()?>/SingUp">SingUp</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+            <?php
+        }elseif ($status == 1) {
+            ?>
+            <nav class="navbar navbar-expand-lg navbar-light bg-blanco shadow">
+              <div class="container-fluid">
+                <a class="navbar-brand color-negro" href="<?=$this->getServe()?>/dashboard"><?=$this->getName()?></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link color-negro" aria-current="page" href="<?=$this->getServe()?>/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link color-negro" aria-current="page" href="<?=$this->getServe()?>/close">Close</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+            <?php
+        }
+    }
 }
 
 ?>

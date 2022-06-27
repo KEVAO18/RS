@@ -73,14 +73,22 @@ class login extends dbController{
     }
 
     public function login(){
+        session_start();
     	$user = $this->getUser();
     	$pass = $this->getPass();
+        
+        if (!isset($user) || !isset($pass)) {
+            $msg = array("msg" => 'one or more empty fields');
+            return json_encode($msg);
+        }
 
     	$query = $this->getDbController()->where("usuarios", "NomUsu", $user);
 
     	foreach ($query as $dato) {
     		if (password_verify($pass, $dato['pass'])) {
     			$msg = array("msg" => 'login success', "status" => 1);
+                $_SESSION['user'] = password_hash($user, PASSWORD_BCRYPT, ["cost" => 5]);
+                $_SESSION['status'] = 1;
 
     			return json_encode($msg);
     		}else{
@@ -89,6 +97,9 @@ class login extends dbController{
     			return json_encode($msg);
     		}
     	}
+        $msg = array("msg" => 'login failed', "status" => 2);
+
+        return json_encode($msg);
     }
 }
 

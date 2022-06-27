@@ -154,6 +154,7 @@ class singUp extends dbController{
     }
 
     public function singUp(){
+        session_start();
         $name = $this->getName();
         $last = $this->getLast();
         $user = $this->getUser();
@@ -162,10 +163,18 @@ class singUp extends dbController{
         $email = $this->getEmail();
         $dbController = $this->getDbController();
 
+        if (empty($name) || empty($last) || empty($user) || empty($pass) || empty($email) || empty($repass)) {
+            $msg = array("msg" => 'one or more empty fields');
+            return json_encode($msg);
+        }
+
         if ($pass == $repass) {
             $query = $this->getDbController()->insert("usuarios", "NomUsu, email, pass, Date, name, lastName, gender", $this->getAll());
 
             $msg = array("msg" => 'singUp complete', "status" => 1);
+
+            $_SESSION['user'] = password_hash($user, PASSWORD_BCRYPT, ["cost" => 5]);
+            $_SESSION['status'] = 1;
 
             return json_encode($msg);
         }else{

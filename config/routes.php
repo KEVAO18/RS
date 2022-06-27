@@ -13,14 +13,17 @@ class routes{
 	        $ruta = explode("/", $p);
 	    }
 
-	    session_start();
+	    $_SESSION['page'] = $ruta[0];
 
-	    if (!isset($_SESSION['userRedS'])) {
+	    if ($_SESSION['user'] == "") {
 	    	$this->outRoute($ruta, $serve, $appName, $autor);
+	    }elseif ($_SESSION['user'] != "") {
+	    	$this->inRoute($ruta, $serve, $appName, $autor);
 	    }
 	}
 
 	public function outRoute($ruta = array(), $s, $n, $autor){
+
 	    switch ($ruta[0]) {
 
 	        case "Home":
@@ -47,8 +50,37 @@ class routes{
 	            break;
 
 	        default:
-	            include "../web/views/e404.php";
-	            e404($serve);
+	            include_once '../www/LogIn.php';
+	            logIn($s, $n);
+	            break;
+	    }
+	}
+
+	public function inRoute($ruta = array(), $s, $n, $autor){
+
+	    switch ($ruta[0]) {
+
+	        case "dashboard":
+	        	include_once '../www/logged/'.$ruta[0].'.php';
+	        	dashboard();
+	            break;
+
+            case 'close':
+            	include_once '../www/logged/'.$ruta[0].'.php';
+            	close();
+            	break;
+
+	        case "e403":
+	            echo $ruta[0];
+	            break;
+
+	        case "e404":
+	            echo $ruta[0];
+	            break;
+
+	        default:
+	            include_once '../www/LogIn.php';
+	            echo $ruta[0];
 	            break;
 	    }
 	}
