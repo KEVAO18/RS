@@ -79,7 +79,7 @@ class login extends dbController{
     	$query = $this->getDbController()->where("usuarios", "NomUsu", $user);
 
     	foreach ($query as $dato) {
-    		if ($dato['pass'] == $pass) {
+    		if (password_verify($pass, $dato['pass'])) {
     			$msg = array("msg" => 'login success', "status" => 1);
 
     			return json_encode($msg);

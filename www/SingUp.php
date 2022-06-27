@@ -8,7 +8,7 @@ function singUp($s, $n){
 			<div class="col-ms-12 col-md-8">
 				<div class="card my-4 py-2-r px-2-r shadow">
 					<h1 class="display-4 text-center color-negro">Welcome</h1>
-					<form role="form" id="login_form">
+					<form role="form" id="singUp_form">
 					  <div class="mb-3">
 						<label for="name" class="form-label color-negro">Name</label>
 						<input type="name" class="form-control" id="name" aria-describedby="nameHelp" name="name">
@@ -49,7 +49,7 @@ function singUp($s, $n){
 		    function login(){
 		      $("#login_ok").on("click", function(e){
 		        e.preventDefault();
-		        var frm = $("#login_form").serialize();
+		        var frm = $("#singUp_form").serialize();
 		        $.ajax({
 		          type: "post",
 		          url: "<?=$s?>/config/singUp.php",
@@ -57,7 +57,7 @@ function singUp($s, $n){
 		          data: frm
 		        }).done(function (info) {
 		        	if (info.status == 1) {
-		        		let ale = document.getElementById("login_form");
+		        		let ale = document.getElementById("singUp_form");
 		        		ale.reset();
 		        		Swal.fire(info.msg,'','success');
 		        	} else {

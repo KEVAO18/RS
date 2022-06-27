@@ -43,6 +43,10 @@ class dbController extends conection{
 		return $q;
 	}
 
+	public function insert($tabla, $columnas, $valores){
+		$q = $this->consultaSQL("INSERT INTO $tabla ($columnas) VALUES ($valores)");
+	}
+
 }
 
 ?>
