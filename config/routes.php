@@ -70,6 +70,11 @@ class routes{
             	close();
             	break;
 
+        	case 'profile':
+        		include '../www/logged/'.$ruta[0].'.php';
+        		profile();
+        		break;
+
 	        case "e403":
 	            echo $ruta[0];
 	            break;
