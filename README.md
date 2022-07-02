@@ -179,7 +179,7 @@ pagina web desarrollada como prueba de blog / Red social
       - h-30-p
       - h-20-p
       - h-10-p
-    - View Width
+    - View Height
       - h-100-v
       - h-80-v
       - h-70-v
